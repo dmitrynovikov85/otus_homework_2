@@ -1,12 +1,11 @@
 <script setup>
 import { onMounted, ref } from 'vue';
-import axios from 'axios';
 import ProductItem from './ProductItem.vue';
+import getProductList from '../services/index.js';
 
 const productList = ref([]);
 onMounted(async () => {
-  const res = await axios.get('https://fakestoreapi.com/products');
-  productList.value = res.data;
+  productList.value = await getProductList();
 });
 </script>
 
